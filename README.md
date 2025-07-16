@@ -1,6 +1,35 @@
 # Aave V2 Wallet Credit Scoring System
 
-A comprehensive machine learning system that assigns credit scores (0-1000) to DeFi wallets based on Aave V2 transaction behavior. This repository provides complete analysis tools, visualization capabilities, and detailed behavioral insights for risk assessment in decentralized finance.
+A comprehensive machine learning system that assigns credit scores (0-1000) to DeFi wallets based on Aave V2 transaction behavior. **Ex## 🛠️ Installation & Requirements
+
+### Prerequisites
+```bash
+pip install -r requirements.txt
+```
+
+Or install manually:
+```bash
+pip install pandas numpy matplotlib seaborn
+```everything with a single command** - scoring, analysis, and visualization all in one step.
+
+## 🚀 Quick Start - One Command Execution
+
+### Install Dependencies
+```bash
+pip install -r requirements.txt
+```
+
+### Run Complete Analysis
+```bash
+# Run everything with a single command
+python run_complete_analysis.py user-wallet-transactions.json
+```
+
+**That's it!** This single command will:
+- ✅ Load and process 100K transactions
+- ✅ Score 3,497 unique wallets (0-1000 scale)
+- ✅ Generate detailed analysis and visualizations
+- ✅ Save comprehensive results and charts
 
 ## 🎯 Overview
 
@@ -9,13 +38,32 @@ Higher scores indicate reliable and responsible DeFi usage; lower scores reflect
 ## 📁 Repository Structure
 
 ```
-├── wallet_credit_scorer.py      # Main scoring engine
-├── generate_analysis.py         # Analysis and visualization script
+├── run_complete_analysis.py     # 🎯 MAIN SCRIPT - One command execution
+├── requirements.txt             # Python dependencies
+├── wallet_credit_scorer.py      # Legacy scoring engine
+├── generate_analysis.py         # Legacy analysis script
 ├── user-wallet-transactions.json # Sample transaction data (100K records)
 ├── wallet_scores_report.json    # Generated scoring results
-├── wallet_score_analysis.png    # Distribution graphs and heatmaps
+├── wallet_score_analysis.png    # Distribution graphs and charts
 ├── README.md                    # This documentation
 └── analysis.md                  # Detailed behavioral analysis
+```
+
+## ⚡ Usage Examples
+
+### Basic Analysis
+```bash
+python run_complete_analysis.py user-wallet-transactions.json
+```
+
+### Skip Visualizations (Faster)
+```bash
+python run_complete_analysis.py user-wallet-transactions.json --no-viz
+```
+
+### Using Your Own Data
+```bash
+python run_complete_analysis.py path/to/your/transactions.json
 ```
 
 ## 🏗️ System Architecture
@@ -51,13 +99,13 @@ Higher scores indicate reliable and responsible DeFi usage; lower scores reflect
 
 ```mermaid
 graph TD
-    A[Raw Transaction Data] --> B[Data Validation]
+    A[JSON Transaction Data] --> B[🎯 run_complete_analysis.py]
     B --> C[Feature Extraction]
     C --> D[Component Scoring]
     D --> E[Weighted Aggregation]
     E --> F[Final Credit Score 0-1000]
-    F --> G[Risk Categorization]
-    G --> H[Analysis & Visualization]
+    F --> G[Analysis & Visualization]
+    G --> H[Results & Charts]
 ```
 
 ## 🔬 Feature Engineering
@@ -67,6 +115,45 @@ graph TD
 - **Processing**: Logarithmic scaling to prevent outlier dominance
 - **Formula**: `min(100, log(transactions + 1) * 20)`
 - **Rationale**: Active engagement indicates protocol familiarity
+
+## 📊 Output Files
+
+After running the analysis, you'll get:
+
+1. **`wallet_scores_report.json`** - Complete scoring results with:
+   - Summary statistics (mean, median, std dev)
+   - Individual wallet scores and component breakdowns
+   - Risk categorization data
+
+2. **`wallet_score_analysis.png`** - Professional visualizations including:
+   - Score distribution histogram
+   - Score range breakdown bar chart
+   - Component analysis box plots
+   - Risk category pie chart
+
+## 🎯 Key Results
+
+**Sample Output:**
+```
+📊 ANALYSIS COMPLETE - SUMMARY RESULTS
+================================================================================
+Total Wallets Analyzed: 3,497
+Average Credit Score: 574.3
+Median Credit Score: 568.8
+Score Range: 281.4 - 929.7
+Standard Deviation: 122.9
+
+📈 Risk Category Breakdown:
+----------------------------------------
+High Risk (0-400)       :    76 (  2.2%)
+Moderate Risk (400-600)  : 2,070 ( 59.2%)
+Good Credit (600-800)    : 1,176 ( 33.6%)
+Elite (800-1000)         :   175 (  5.0%)
+```
+
+## 🔧 Technical Details
+
+### Algorithm Components (Detailed)
 
 ### 2. Repayment Behavior (Weight: 25%)
 - **Input**: Ratio of repay to borrow transactions
@@ -98,40 +185,99 @@ graph TD
 - **Formula**: `min(100, wallet_age_days / 30 * 100)`
 - **Rationale**: Established usage history indicates stability
 
-## 🚀 Quick Start
+## �️ Installation & Requirements
 
 ### Prerequisites
 ```bash
 pip install pandas numpy matplotlib seaborn
 ```
 
-### Basic Usage
+### Legacy Usage (Individual Steps)
 ```bash
-# Generate credit scores
+# Step 1: Generate credit scores only
 python wallet_credit_scorer.py user-wallet-transactions.json -o wallet_scores_report.json
 
-# Generate analysis and visualizations
+# Step 2: Generate analysis and visualizations separately
 python generate_analysis.py
 ```
 
-### Expected Output
+## 💡 Design Philosophy
+
+**One Command Simplicity**: The entire analysis pipeline is consolidated into a single script (`run_complete_analysis.py`) that handles:
+- Data loading and validation
+- Feature engineering across 6 dimensions
+- Weighted scoring algorithm
+- Statistical analysis
+- Professional visualization generation
+- Results export
+
+**Production Ready**: The system includes comprehensive error handling, input validation, and generates publication-quality outputs suitable for risk assessment teams.
+
+## 🔍 Example Workflow
+
+```bash
+# Clone the repository
+git clone https://github.com/shyamkaarthikeyan/Zeru-Task-Submission
+cd Zeru-Task-Submission
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Run complete analysis (one command does everything!)
+python run_complete_analysis.py user-wallet-transactions.json
+
+# View results
+# - Check wallet_scores_report.json for detailed data
+# - View wallet_score_analysis.png for visualizations
 ```
-Loading transaction data...
-Loaded 100000 transactions
-Extracting features...
-Calculating score components...
-Computing final scores...
 
-Scoring complete! Processed 3497 wallets.
-Average credit score: 574.3
+## 🎯 Expected Output
 
-Top 10 Highest Scoring Wallets:
- 1. 0x043fd...9f24: 929.68
- 2. 0x033ff...0f796: 898.97
+When you run the command, you'll see:
+
+```
+================================================================================
+🚀 AAVE V2 WALLET CREDIT SCORING SYSTEM
+================================================================================
+🔄 Loading transaction data...
+✓ Loaded 100000 transactions
+🔄 Extracting features...
+🔄 Calculating score components...
+🔄 Computing final scores...
+✓ Scoring complete! Processed 3497 wallets.
+
+🔄 Generating analysis and visualizations...
+✓ Visualizations saved as 'wallet_score_analysis.png'
+✓ Detailed results saved to 'wallet_scores_report.json'
+
+================================================================================
+📊 ANALYSIS COMPLETE - SUMMARY RESULTS
+================================================================================
+Total Wallets Analyzed: 3,497
+Average Credit Score: 574.3
+Median Credit Score: 568.8
+Score Range: 281.4 - 929.7
+Standard Deviation: 122.9
+
+📈 Risk Category Breakdown:
+----------------------------------------
+High Risk (0-400)        :    76 (  2.2%)
+Moderate Risk (400-600)  : 2,070 ( 59.2%)
+Good Credit (600-800)    : 1,176 ( 33.6%)
+Elite (800-1000)         :   175 (  5.0%)
+
+🏆 Top 10 Highest Scoring Wallets:
+--------------------------------------------------------------------------------
+ 1. 0x043fdabff38a1e9897f2f5a860b8b88f9a0a9f24: 929.68
+ 2. 0x033ffcf5d843a16da224f62b5cb1c4980310f796: 898.97
  ...
-```
 
-## 📊 Key Results
+================================================================================
+✅ All files generated successfully!
+📄 wallet_scores_report.json - Detailed scoring results
+📊 wallet_score_analysis.png - Visualization charts
+================================================================================
+```
 
 ### Score Distribution
 - **Average Score**: 574.3 (Fair Credit)
